@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Open Graph tags -->
+    {% if USE_OPEN_GRAPH is not defined %}
+        {% set USE_OPEN_GRAPH = True %}
+    {% endif %}
+
+    {% if USE_OPEN_GRAPH %}
+        {% if OPEN_GRAPH_FB_APP_ID %}
+            <meta property="fb:app_id" content="{{ OPEN_GRAPH_FB_APP_ID }}"/>
+        {% endif %}
+        {% if article and article.latex %}
+        {{ article.latex }}
+        {% endif %}
+        {% if page and page.latex %}
+        {{ page.latex }}
+        {% endif %}
+        {% if article%}
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="{{ article.title|striptags }}"/>
+            <meta property="og:url" content="{{ SITEURL }}/{{ article.url }}"/>
+            <!--meta property="og:description" content="{{ article.summary|striptags }}"/-->
+        {% elif page %}
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="{{ page.title }}"/>
+            <meta property="og:url" content="{{ SITEURL }}/{{ page.url }}"/>
+        {% else %}
+            <meta property="og:type" content="website"/>
+            <meta property="og:title" content="{{ SITENAME }}"/>
+            <meta property="og:url" content="{{ SITEURL }}"/>
+            <meta property="og:description" content="{{ SITENAME }}"/>
+            {% if OPEN_GRAPH_IMAGE %}
+            <meta property="og:image"
+                  content="{{ SITEURL }}/static/{{ OPEN_GRAPH_IMAGE }}"/>
+        {% endif %}
+        {% endif %}
+
+    {% endif %}
+    <!-- Bootstrap -->
+    {% if BOOTSTRAP_THEME %}
+        <link rel="stylesheet" href="{{ SITEURL }}/theme/css/bootstrap.{{ BOOTSTRAP_THEME }}.min.css" type="text/css"/>
+        <link rel="stylesheet" href="{{ SITEURL }}/theme/css/style.{{ BOOTSTRAP_THEME }}.css" type="text/css"/>
+    {% else %}
+        <link rel="stylesheet" href="{{ SITEURL }}/theme/css/bootstrap.min.css" type="text/css"/>
+        <link rel="stylesheet" href="{{ SITEURL }}/theme/css/style.css">  
+    {% endif %}
+    <link href="{{ SITEURL }}/theme/css/font-awesome.min.css" rel="stylesheet">
+    <!--link href="{{ SITEURL }}/theme/css/pygments.css" rel="stylesheet"-->
+    <link href="{{ SITEURL }}/theme/css/prism.css" rel="stylesheet" />
+    {% if DOCUTIL_CSS %}
+        <link href="{{ SITEURL }}/theme/css/html4css1.css" rel="stylesheet">
+    {% endif %}  
+    <!-- JavaScript plugins (requires jQuery) -->
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="jquery.pageslide.css">
+
+    {% if FEED_ALL_ATOM %}
+        <link href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate"
+              title="{{ SITENAME }} ATOM Feed"/>
+    {% endif %}
+    {% if FEED_ALL_RSS %}
+        <link href="{{ SITEURL }}/{{ FEED_ALL_RSS }}" type="application/atom+xml" rel="alternate"
+              title="{{ SITENAME }} RSS Feed"/>
+    {% endif %}
+
+</head>
+<body>
+
+<div class="wrap">
+    {% include 'includes/goodreads_quotes.html' %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 col-md-8 col-lg-9 col-xs-12">
+                {% if HEADER_IMAGE %}
+                <div>
+                <img src="{{ SITEURL }}/images/{{ HEADER_IMAGE }}" class="img-responsive" alt="Responsive image">
+                </div>
+                <hr class="hidden-xs"/>
+                {% endif %}
+
+                    {% block content %}
+                    {% endblock %}
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-3 col-xs-12">
+                {% if PROFILE_PICTURE %}
+                <div class="row text-center">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <img class="img-circle image100" src="{{ SITEURL }}/images/{{ PROFILE_PICTURE }}" alt="" />
+                    </div>
+                </div><hr />
+                {% endif %}
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a class="btn btn-default" href="{{ SITEURL }}/index.html">Home</a></li>
+                    {% if DISPLAY_PAGES_ON_MENU %}
+                        {% for page in PAGES %}
+                            <li><a class="btn btn-default" href="{{ SITEURL }}/{{ page.url }}">{{ page.title }}</a></li>
+                        {% endfor %}
+                    {% endif %}
+                    <li>
+                        <a class="btn btn-default" href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}">Archives</a>
+                    </li>
+                </ul><hr />
+
+                {% include 'includes/sidebar_widgets.html' %}
+
+                    
+            </div>
+        </div>
+        <hr class="hidden-xs"/>
+        <div class="row">
+            <div class="footer">
+                <div class="container">
+                    <p class="footnote">©Christine Doig. Proudly powered by <a href="http://pelican.notmyidea.org/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</i></a>. Thanks to <a href="http://twitter.github.com/bootstrap/">Bootstrap</i></a>, <a href="http://subtlepatterns.com/">Subtle Patterns</i></a> and <a href="http://fortawesome.github.com/Font-Awesome/">Font-Awesome.</a> Lovers Theme by Christine Doig
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="{{ SITEURL }}/theme/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="jquery.pageslide.min.js"></script>
+<script src="{{ SITEURL }}/theme/js/prism.js"></script>
+<script>function validateForm(query)
+    {return (query.length > 0);}
+</script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="{{ SITEURL }}/theme/js/respond.min.js"></script>
+{% include 'includes/disqus_script.html' %}
+{% include 'includes/ga.html' %}
+</body>
+</html>

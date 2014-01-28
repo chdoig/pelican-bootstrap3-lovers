@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+    <section id="content">
+        <h2>Archives for {{ SITENAME }}</h2>
+
+        <dl>
+        	{% for category, articles in categories %}
+                <h4>{{ category }}</h4>
+            	{% for article in dates %}
+            		{% if (article.category==category) %}
+                	<dt>{{ article.locale_date }}</dt>
+                	<dd><a href='{{ article.url }}'>{{ article.title }}</a></dd>
+                	{% endif %}
+            	{% endfor %}
+            {% endfor %}
+        </dl>
+    </section>
+{% endblock %}

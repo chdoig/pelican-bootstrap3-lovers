@@ -1,0 +1,9 @@
+{% if ADDTHIS_PROFILE %}
+    <!-- AddThis Button BEGIN -->
+        <a class="addthis_button_facebook_like" fb:like:layout="button_count" text-align:right></a>
+        <a class="addthis_button_tweet" text-align:right></a>
+        <a class="addthis_button_google_plusone" g:plusone:size="medium" text-align:right></a>
+    <script type="text/javascript">var addthis_config = {"data_track_addressbar": true};</script>
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid={{ ADDTHIS_PROFILE }}"></script>
+    <!-- AddThis Button END -->
+{% endif %}

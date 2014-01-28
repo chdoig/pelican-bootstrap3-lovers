@@ -1,0 +1,13 @@
+{% if LINKS %}
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        ~ Interesting Links ~
+    </div>
+    <div class="panel-body">
+    {% for name, link in LINKS %}
+        <li class="list-group-item"><a href="{{ link }}">{{ name }}
+        </a></li>
+    {% endfor %}
+    </div>
+</div>
+{% endif %}

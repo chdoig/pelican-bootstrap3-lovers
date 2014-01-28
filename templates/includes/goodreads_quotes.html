@@ -1,0 +1,12 @@
+{% if GOODREADS_ID %}
+
+<div class="container">
+    <div class="row-quote">
+    	<a href="https://www.goodreads.com/user/show/{{ GOODREADS_ID }}"></a>
+    	<h4><div id="gr_quote_body">
+    	</div></h4>
+		<script src="https://www.goodreads.com/quotes/widget/{{ GOODREADS_ID }}?v=2" type="text/javascript"></script>
+	</div>
+</div>
+
+{% endif %}

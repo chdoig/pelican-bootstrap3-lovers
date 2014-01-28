@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+    {% if articles %}
+    <!--h4 class="section">Blog</h4-->
+    <div class="row">
+        {% for article in (articles_page.object_list if articles_page else articles) %}
+        <div class= "menu-category">
+            <div class="thumbnail">
+                    <div class="caption">
+                        <h6 class="summary-date">{{article.locale_date}}</h6>
+                        <h3><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h3>
+                        <p>{{ article.summary }}</p>
+                        <p class="btn-read"><a class="btn btn-default" href="{{ SITEURL }}/{{ article.url }}">Read more</a></p>
+                    </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% endif %}
+    </div>
+{% include 'includes/pagination.html' %} 
+{% endblock content %}
