@@ -133,20 +133,17 @@ The theme is set up to use Prism instead of Pygments for syntax highlighting.
 
 When using Markdown you'll need to write your code like this with the aproppriate `language-XXXX`(e.g. language-python, language-css, etc):
 
-~~~~{.bash}
+```
   ~~~~{.language-XXXX}
   	YOUR CODE HERE
-  ~~~~
+``` 
+
+Make sure you're not using `codehilite(css_class=highlight)`, e.g. `pelicanconf.py` file:
+
+~~~~{.language-python}
+MD_EXTENSIONS = ['extra']
 ~~~~ 
 
-
-And setup your `pelicanconf.py` file to:
-
-```
-  ~~~~{.language-XXXX}
-    YOUR CODE HERE
-  ~~~~ 
-```
 
 If you'd rahter keep using Pygments in your blog, just set it up in `base.html` to:
 
