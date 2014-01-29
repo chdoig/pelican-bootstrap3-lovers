@@ -35,7 +35,7 @@ This theme already incorporates some standard Pelican Plugins and allows the fol
 	* `GOOGLE_ANALYTICS`
 	* `DISQUS_SITENAME`
 
-Note: This theme uses uses Prism.js instead of Pygments for syntax higlighting. (More details in the Prism.js section).
+Note: This theme uses uses [Prism](http://prismjs.com/) instead of Pygments for syntax higlighting. (More details in the Prism.js section).
 
 Details for each of the mentioned settings are provided next.
 
@@ -116,7 +116,7 @@ The theme can show your most recently active GitHub repos in the sidebar. To ena
 
 ### TWITTER_WIDGET_ID
 
-To get a `TWITTER_WIDGET_ID`, go to: `https://twitter.com/settings/widgets` and `Create new`. You'll find the `TWITTER_WIDGET_ID` under the html or in the site url:
+To get a `TWITTER_WIDGET_ID`, go to: https://twitter.com/settings/widgets and `Create new`. You'll find the `TWITTER_WIDGET_ID` under the html or in the site url:
 
 `https://twitter.com/settings/widgets/TWITTER_WIDGET_ID/edit`
 
@@ -129,7 +129,7 @@ TWITTER_WIDGET_ID = XXXXX
 
 ## Prism.js for syntax highlighting
 
-The theme is set up to use Prism instead of Pygments for syntax highlighting.
+The theme is set up to use [Prism](http://prismjs.com/) instead of Pygments for syntax highlighting.
 
 When using Markdown you'll need to write your code like this with the aproppriate `language-XXXX`(e.g. language-python, language-css, etc):
 
@@ -164,8 +164,8 @@ MD_EXTENSIONS = ['codehilite(css_class=highlight)']
 This theme uses [Google Analytics](www.google.com/analytics) and [Disqus](http://disqus.com/) for comments. You'll need to get your Google analytics Tracking ID and your disqus_sitename. Visit their respectives websites to find out how to get these IDs and copy them into your `pelicanconf.py`:
 
 ~~~~{.python}
-`GOOGLE_ANALYTICS`
-`DISQUS_SITENAME`
+GOOGLE_ANALYTICS = XXXXX
+DISQUS_SITENAME = XXXXX
 ~~~~
 
 ## Screenshot
