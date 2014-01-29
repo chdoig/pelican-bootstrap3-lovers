@@ -35,7 +35,7 @@ This theme already incorporates some standard Pelican Plugins and allows the fol
 	* `GOOGLE_ANALYTICS`
 	* `DISQUS_SITENAME`
 
-Note: This theme uses uses [Prism](http://prismjs.com/) instead of Pygments for syntax higlighting. (More details in the Prism.js section).
+Note: This theme uses [Prism](http://prismjs.com/) instead of Pygments for syntax higlighting. (More details in the Prism.js section).
 
 Details for each of the mentioned settings are provided next.
 
